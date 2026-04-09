@@ -21,8 +21,8 @@ class EnterpriseManager:
         """validates a cif number """
         if not isinstance(cif, str):
             raise EnterpriseManagementException("CIF code must be a string")
-        p = re.compile(r"^[ABCDEFGHJKNPQRSUVW]\d{7}[0-9A-J]$")
-        if not p.fullmatch(cif):
+        patron_cif = re.compile(r"^[ABCDEFGHJKNPQRSUVW]\d{7}[0-9A-J]$")
+        if not patron_cif.fullmatch(cif):
             raise EnterpriseManagementException("Invalid CIF format")
 
         primera_letra = cif[0]
@@ -89,10 +89,7 @@ class EnterpriseManager:
                          budget: str):
         """registers a new project"""
         self.validate_cif(company_cif)
-        mr = re.compile(r"^[a-zA-Z0-9]{5,10}")
-        res = mr.fullmatch(project_acronym)
-        if not res:
-            raise EnterpriseManagementException("Invalid acronym")
+        self.validate_project_acronym(project_acronym)
         md = re.compile(r"^.{10,30}$")
         res = md.fullmatch(project_description)
         if not res:
@@ -150,6 +147,11 @@ class EnterpriseManager:
             raise EnterpriseManagementException("JSON Decode Error - Wrong JSON Format") from ex
         return new_project.project_id
 
+    def validate_project_acronym(self, project_acronym: str):
+        mr = re.compile(r"^[a-zA-Z0-9]{5,10}")
+        res = mr.fullmatch(project_acronym)
+        if not res:
+            raise EnterpriseManagementException("Invalid acronym")
 
     def find_docs(self, date_str):
         """
