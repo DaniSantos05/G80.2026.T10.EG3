@@ -145,17 +145,7 @@ class EnterpriseManager:
              "Numfiles": rst
              }
 
-        try:
-            with open(TEST_NUMDOCS_STORE_FILE, "r", encoding="utf-8", newline="") as file:
-                dl = json.load(file)
-        except FileNotFoundError:
-            dl = []
-        except json.JSONDecodeError as ex:
-            raise EnterpriseManagementException("JSON Decode Error - Wrong JSON Format") from ex
-        dl.append(s)
-        try:
-            with open(TEST_NUMDOCS_STORE_FILE, "w", encoding="utf-8", newline="") as file:
-                json.dump(dl, file, indent=2)
-        except FileNotFoundError as ex:
-            raise EnterpriseManagementException("Wrong file  or file path") from ex
+        lista_informes = JsonStore.load_json_store(TEST_NUMDOCS_STORE_FILE)
+        lista_informes.append(s)
+        JsonStore.save_json_store(TEST_NUMDOCS_STORE_FILE, lista_informes)
         return rst
