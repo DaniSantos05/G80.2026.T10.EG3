@@ -34,11 +34,11 @@ class EnterpriseManager:
 
         for i in range(len(digitos)):
             if i % 2 == 0:
-                x = int(digitos[i]) * 2
-                if x > 9:
-                    suma_pares_doblados = suma_pares_doblados + (x // 10) + (x % 10)
+                digito_doblado = int(digitos[i]) * 2
+                if digito_doblado > 9:
+                    suma_pares_doblados = suma_pares_doblados + (digito_doblado // 10) + (digito_doblado % 10)
                 else:
-                    suma_pares_doblados = suma_pares_doblados + x
+                    suma_pares_doblados = suma_pares_doblados + digito_doblado
             else:
                 suma_impares = suma_impares + int(digitos[i])
 
