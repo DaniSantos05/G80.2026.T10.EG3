@@ -10,28 +10,24 @@ from uc3m_consulting.enterprise_manager_config import (PROJECTS_STORE_FILE,
                                                        TEST_DOCUMENTS_STORE_FILE,
                                                        TEST_NUMDOCS_STORE_FILE)
 from uc3m_consulting.project_document import ProjectDocument
+from uc3m_consulting.json_store import JsonStore
+
 
 class EnterpriseManager:
     """Class for providing the methods for managing the orders"""
     def __init__(self):
         pass
 
-
     def _cargar_proyectos_del_almacen(self):
         """Carga la lista de proyectos almacenados en JSON."""
-        try:
-            with open(PROJECTS_STORE_FILE, "r", encoding="utf-8", newline="") as file:
-                lista_proyectos = json.load(file)
-        except FileNotFoundError:
-            lista_proyectos = []
-        except json.JSONDecodeError as ex:
-            raise EnterpriseManagementException(
-                "JSON Decode Error - Wrong JSON Format"
-            ) from ex
+        return JsonStore.load_json_store(PROJECTS_STORE_FILE)
 
-        return lista_proyectos
+    def _guardar_proyectos_en_almacen(self, lista_proyectos):
+        """Guarda la lista de proyectos en el almacén JSON."""
+        JsonStore.save_json_store(PROJECTS_STORE_FILE, lista_proyectos)
 
     #pylint: disable=too-many-arguments, too-many-positional-arguments
+    # pylint: disable=too-many-arguments, too-many-positional-arguments
     def register_project(self,
                          company_cif: str,
                          project_acronym: str,
@@ -40,33 +36,29 @@ class EnterpriseManager:
                          date: str,
                          budget: str):
         """registers a new project"""
-
-
-        md = re.compile(r"^.{10,30}$")
-        res = md.fullmatch(project_description)
-        if not res:
+        patron_descripcion = re.compile(r"^.{10,30}$")
+        resultado = patron_descripcion.fullmatch(project_description)
+        if not resultado:
             raise EnterpriseManagementException("Invalid description format")
 
-        mr = re.compile(r"(HR|FINANCE|LEGAL|LOGISTICS)")
-        res = mr.fullmatch(department)
-        if not res:
+        patron_departamento = re.compile(r"(HR|FINANCE|LEGAL|LOGISTICS)")
+        resultado = patron_departamento.fullmatch(department)
+        if not resultado:
             raise EnterpriseManagementException("Invalid department")
 
-
         try:
-            f_bdgt  = float(budget)
+            presupuesto_float = float(budget)
         except ValueError as exc:
             raise EnterpriseManagementException("Invalid budget amount") from exc
 
-        n_str = str(f_bdgt)
-        if '.' in n_str:
-            decimales = len(n_str.split('.')[1])
+        presupuesto_texto = str(presupuesto_float)
+        if '.' in presupuesto_texto:
+            decimales = len(presupuesto_texto.split('.')[1])
             if decimales > 2:
                 raise EnterpriseManagementException("Invalid budget amount")
 
-        if f_bdgt < 50000 or f_bdgt > 1000000:
+        if presupuesto_float < 50000 or presupuesto_float > 1000000:
             raise EnterpriseManagementException("Invalid budget amount")
-
 
         new_project = EnterpriseProject(company_cif=company_cif,
                                         project_acronym=project_acronym,
@@ -76,19 +68,15 @@ class EnterpriseManager:
                                         project_budget=budget)
 
         lista_proyectos = self._cargar_proyectos_del_almacen()
+
         for proyecto_almacenado in lista_proyectos:
             if proyecto_almacenado == new_project.to_json():
                 raise EnterpriseManagementException("Duplicated project in projects list")
 
         lista_proyectos.append(new_project.to_json())
 
-        try:
-            with open(PROJECTS_STORE_FILE, "w", encoding="utf-8", newline="") as file:
-                json.dump(lista_proyectos, file, indent=2)
-        except FileNotFoundError as ex:
-            raise EnterpriseManagementException("Wrong file  or file path") from ex
-        except json.JSONDecodeError as ex:
-            raise EnterpriseManagementException("JSON Decode Error - Wrong JSON Format") from ex
+        self._guardar_proyectos_en_almacen(lista_proyectos)
+
         return new_project.project_id
 
 
