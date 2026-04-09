@@ -29,20 +29,20 @@ class EnterpriseManager:
         digitos = cif[1:8]
         caracter_control = cif[8]
 
-        s1 = 0
+        suma_pares_doblados = 0
         s2 = 0
 
         for i in range(len(digitos)):
             if i % 2 == 0:
                 x = int(digitos[i]) * 2
                 if x > 9:
-                    s1 = s1 + (x // 10) + (x % 10)
+                    suma_pares_doblados = suma_pares_doblados + (x // 10) + (x % 10)
                 else:
-                    s1 = s1 + x
+                    suma_pares_doblados = suma_pares_doblados + x
             else:
                 s2 = s2 + int(digitos[i])
 
-        t = s1 + s2
+        t = suma_pares_doblados + s2
         u2 = t % 10
         r = 10 - u2
 
