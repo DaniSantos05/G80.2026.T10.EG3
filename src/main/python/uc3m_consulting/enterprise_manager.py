@@ -110,11 +110,9 @@ class EnterpriseManager:
 
 
         # open documents
-        try:
-            with open(TEST_DOCUMENTS_STORE_FILE, "r", encoding="utf-8", newline="") as file:
-                d_list = json.load(file)
-        except FileNotFoundError as ex:
-            raise EnterpriseManagementException("Wrong file  or file path") from ex
+        d_list = JsonStore.load_json_store(TEST_DOCUMENTS_STORE_FILE)
+        if not d_list:
+            raise EnterpriseManagementException("Wrong file  or file path")
 
 
         rst = 0
