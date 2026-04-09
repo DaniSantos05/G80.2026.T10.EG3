@@ -79,6 +79,21 @@ class EnterpriseManager:
         if my_date.year < 2025 or my_date.year > 2050:
             raise EnterpriseManagementException("Invalid date format")
         return t_d
+
+    def _cargar_proyectos_del_almacen(self):
+        """Carga la lista de proyectos almacenados en JSON."""
+        try:
+            with open(PROJECTS_STORE_FILE, "r", encoding="utf-8", newline="") as file:
+                lista_proyectos = json.load(file)
+        except FileNotFoundError:
+            lista_proyectos = []
+        except json.JSONDecodeError as ex:
+            raise EnterpriseManagementException(
+                "JSON Decode Error - Wrong JSON Format"
+            ) from ex
+
+        return lista_proyectos
+
     #pylint: disable=too-many-arguments, too-many-positional-arguments
     def register_project(self,
                          company_cif: str,
