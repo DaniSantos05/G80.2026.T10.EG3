@@ -16,7 +16,7 @@ class EnterpriseProject:
                  starting_date: str,
                  project_budget: float):
         self.__company_cif = self.validate_cif(company_cif)
-        self.__project_description = project_description
+        self.__project_description = self.validate_project_description(project_description)
         self.__project_achronym = self.validate_project_acronym(project_acronym)
         self.__department = department
         self.__starting_date = self.validate_starting_date(starting_date)
@@ -98,6 +98,15 @@ class EnterpriseProject:
             raise EnterpriseManagementException("Invalid date format")
 
         return t_d
+
+    @staticmethod
+    def validate_project_description(project_description: str):
+        """Validates the project description."""
+        patron_descripcion = re.compile(r"^.{10,30}$")
+        resultado = patron_descripcion.fullmatch(project_description)
+        if not resultado:
+            raise EnterpriseManagementException("Invalid description format")
+        return project_description
 
     def __str__(self):
         return "Project:" + json.dumps(self.__dict__)
