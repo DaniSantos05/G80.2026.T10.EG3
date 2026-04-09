@@ -30,7 +30,7 @@ class EnterpriseManager:
         caracter_control = cif[8]
 
         suma_pares_doblados = 0
-        s2 = 0
+        suma_impares = 0
 
         for i in range(len(digitos)):
             if i % 2 == 0:
@@ -40,9 +40,9 @@ class EnterpriseManager:
                 else:
                     suma_pares_doblados = suma_pares_doblados + x
             else:
-                s2 = s2 + int(digitos[i])
+                suma_impares = suma_impares + int(digitos[i])
 
-        t = suma_pares_doblados + s2
+        t = suma_pares_doblados + suma_impares
         u2 = t % 10
         r = 10 - u2
 
