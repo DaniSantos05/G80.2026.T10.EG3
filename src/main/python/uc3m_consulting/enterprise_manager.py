@@ -110,11 +110,7 @@ class EnterpriseManager:
             raise EnterpriseManagementException("JSON Decode Error - Wrong JSON Format") from ex
         return new_project.project_id
 
-    def validate_project_acronym(self, project_acronym: str):
-        mr = re.compile(r"^[a-zA-Z0-9]{5,10}")
-        res = mr.fullmatch(project_acronym)
-        if not res:
-            raise EnterpriseManagementException("Invalid acronym")
+
 
     def find_docs(self, date_str):
         """
