@@ -27,7 +27,7 @@ class EnterpriseManager:
 
         primera_letra = cif[0]
         digitos = cif[1:8]
-        u = cif[8]
+        caracter_control = cif[8]
 
         s1 = 0
         s2 = 0
@@ -52,10 +52,10 @@ class EnterpriseManager:
         dic = "JABCDEFGHI"
 
         if primera_letra in ('A', 'B', 'E', 'H'):
-            if str(r) != u:
+            if str(r) != caracter_control:
                 raise EnterpriseManagementException("Invalid CIF character control number")
         elif primera_letra in ('P', 'Q', 'S', 'K'):
-            if dic[r] != u:
+            if dic[r] != caracter_control:
                 raise EnterpriseManagementException("Invalid CIF character control letter")
         else:
             raise EnterpriseManagementException("CIF type not supported")
