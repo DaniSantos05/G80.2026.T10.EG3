@@ -16,50 +16,6 @@ class EnterpriseManager:
     def __init__(self):
         pass
 
-    @staticmethod
-    def validate_cif(cif: str):
-        """validates a cif number """
-        if not isinstance(cif, str):
-            raise EnterpriseManagementException("CIF code must be a string")
-        patron_cif = re.compile(r"^[ABCDEFGHJKNPQRSUVW]\d{7}[0-9A-J]$")
-        if not patron_cif.fullmatch(cif):
-            raise EnterpriseManagementException("Invalid CIF format")
-
-        primera_letra = cif[0]
-        digitos = cif[1:8]
-        caracter_control = cif[8]
-
-        suma_pares_doblados = 0
-        suma_impares = 0
-
-        for i in range(len(digitos)):
-            if i % 2 == 0:
-                digito_doblado = int(digitos[i]) * 2
-                if digito_doblado > 9:
-                    suma_pares_doblados = suma_pares_doblados + (digito_doblado // 10) + (digito_doblado % 10)
-                else:
-                    suma_pares_doblados = suma_pares_doblados + digito_doblado
-            else:
-                suma_impares = suma_impares + int(digitos[i])
-
-        suma_total = suma_pares_doblados + suma_impares
-        ultimo_digito = suma_total % 10
-        digito_control = 10 - ultimo_digito
-
-        if digito_control == 10:
-            digito_control = 0
-
-        letras_control = "JABCDEFGHI"
-
-        if primera_letra in ('A', 'B', 'E', 'H'):
-            if str(digito_control) != caracter_control:
-                raise EnterpriseManagementException("Invalid CIF character control number")
-        elif primera_letra in ('P', 'Q', 'S', 'K'):
-            if letras_control[digito_control] != caracter_control:
-                raise EnterpriseManagementException("Invalid CIF character control letter")
-        else:
-            raise EnterpriseManagementException("CIF type not supported")
-        return True
 
     def validate_starting_date(self, t_d):
         """validates the  date format  using regex"""
@@ -103,7 +59,7 @@ class EnterpriseManager:
                          date: str,
                          budget: str):
         """registers a new project"""
-        self.validate_cif(company_cif)
+
         self.validate_project_acronym(project_acronym)
         md = re.compile(r"^.{10,30}$")
         res = md.fullmatch(project_description)
