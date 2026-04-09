@@ -44,18 +44,18 @@ class EnterpriseManager:
 
         suma_total = suma_pares_doblados + suma_impares
         ultimo_digito = suma_total % 10
-        r = 10 - ultimo_digito
+        digito_control = 10 - ultimo_digito
 
-        if r == 10:
-            r = 0
+        if digito_control == 10:
+            digito_control = 0
 
         dic = "JABCDEFGHI"
 
         if primera_letra in ('A', 'B', 'E', 'H'):
-            if str(r) != caracter_control:
+            if str(digito_control) != caracter_control:
                 raise EnterpriseManagementException("Invalid CIF character control number")
         elif primera_letra in ('P', 'Q', 'S', 'K'):
-            if dic[r] != caracter_control:
+            if dic[digito_control] != caracter_control:
                 raise EnterpriseManagementException("Invalid CIF character control letter")
         else:
             raise EnterpriseManagementException("CIF type not supported")
