@@ -17,17 +17,17 @@ class EnterpriseManager:
         pass
 
     @staticmethod
-    def validate_cif(c: str):
+    def validate_cif(cif: str):
         """validates a cif number """
-        if not isinstance(c, str):
+        if not isinstance(cif, str):
             raise EnterpriseManagementException("CIF code must be a string")
         p = re.compile(r"^[ABCDEFGHJKNPQRSUVW]\d{7}[0-9A-J]$")
-        if not p.fullmatch(c):
+        if not p.fullmatch(cif):
             raise EnterpriseManagementException("Invalid CIF format")
 
-        l = c[0]
-        n = c[1:8]
-        u = c[8]
+        primera_letra = cif[0]
+        n = cif[1:8]
+        u = cif[8]
 
         s1 = 0
         s2 = 0
@@ -51,10 +51,10 @@ class EnterpriseManager:
 
         dic = "JABCDEFGHI"
 
-        if l in ('A', 'B', 'E', 'H'):
+        if primera_letra in ('A', 'B', 'E', 'H'):
             if str(r) != u:
                 raise EnterpriseManagementException("Invalid CIF character control number")
-        elif l in ('P', 'Q', 'S', 'K'):
+        elif primera_letra in ('P', 'Q', 'S', 'K'):
             if dic[r] != u:
                 raise EnterpriseManagementException("Invalid CIF character control letter")
         else:
