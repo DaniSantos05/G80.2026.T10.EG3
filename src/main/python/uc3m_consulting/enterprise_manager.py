@@ -38,24 +38,7 @@ class EnterpriseManager:
         """registers a new project"""
 
 
-        patron_departamento = re.compile(r"(HR|FINANCE|LEGAL|LOGISTICS)")
-        resultado = patron_departamento.fullmatch(department)
-        if not resultado:
-            raise EnterpriseManagementException("Invalid department")
 
-        try:
-            presupuesto_float = float(budget)
-        except ValueError as exc:
-            raise EnterpriseManagementException("Invalid budget amount") from exc
-
-        presupuesto_texto = str(presupuesto_float)
-        if '.' in presupuesto_texto:
-            decimales = len(presupuesto_texto.split('.')[1])
-            if decimales > 2:
-                raise EnterpriseManagementException("Invalid budget amount")
-
-        if presupuesto_float < 50000 or presupuesto_float > 1000000:
-            raise EnterpriseManagementException("Invalid budget amount")
 
         new_project = EnterpriseProject(company_cif=company_cif,
                                         project_acronym=project_acronym,

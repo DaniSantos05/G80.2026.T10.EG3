@@ -20,7 +20,7 @@ class EnterpriseProject:
         self.__project_achronym = self.validate_project_acronym(project_acronym)
         self.__department = self.validate_department(department)
         self.__starting_date = self.validate_starting_date(starting_date)
-        self.__project_budget = project_budget
+        self.__project_budget = self.validate_project_budget(project_budget)
         justnow = datetime.now(timezone.utc)
         self.__time_stamp = datetime.timestamp(justnow)
 
@@ -116,6 +116,25 @@ class EnterpriseProject:
         if not resultado:
             raise EnterpriseManagementException("Invalid department")
         return department
+
+    @staticmethod
+    def validate_project_budget(project_budget):
+        """Validates the project budget."""
+        try:
+            presupuesto_float = float(project_budget)
+        except ValueError as exc:
+            raise EnterpriseManagementException("Invalid budget amount") from exc
+
+        presupuesto_texto = str(presupuesto_float)
+        if '.' in presupuesto_texto:
+            decimales = len(presupuesto_texto.split('.')[1])
+            if decimales > 2:
+                raise EnterpriseManagementException("Invalid budget amount")
+
+        if presupuesto_float < 50000 or presupuesto_float > 1000000:
+            raise EnterpriseManagementException("Invalid budget amount")
+
+        return project_budget
 
     def __str__(self):
         return "Project:" + json.dumps(self.__dict__)
