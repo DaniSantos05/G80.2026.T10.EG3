@@ -19,7 +19,7 @@ class EnterpriseProject:
         self.__project_description = project_description
         self.__project_achronym = self.validate_project_acronym(project_acronym)
         self.__department = department
-        self.__starting_date = starting_date
+        self.__starting_date = self.validate_starting_date(starting_date)
         self.__project_budget = project_budget
         justnow = datetime.now(timezone.utc)
         self.__time_stamp = datetime.timestamp(justnow)
@@ -77,6 +77,27 @@ class EnterpriseProject:
         if not resultado:
             raise EnterpriseManagementException("Invalid acronym")
         return project_acronym
+
+    @staticmethod
+    def validate_starting_date(t_d):
+        """validates the  date format  using regex"""
+        mr = re.compile(r"^(([0-2]\d|3[0-1])\/(0\d|1[0-2])\/\d\d\d\d)$")
+        res = mr.fullmatch(t_d)
+        if not res:
+            raise EnterpriseManagementException("Invalid date format")
+
+        try:
+            my_date = datetime.strptime(t_d, "%d/%m/%Y").date()
+        except ValueError as ex:
+            raise EnterpriseManagementException("Invalid date format") from ex
+
+        if my_date < datetime.now(timezone.utc).date():
+            raise EnterpriseManagementException("Project's date must be today or later.")
+
+        if my_date.year < 2025 or my_date.year > 2050:
+            raise EnterpriseManagementException("Invalid date format")
+
+        return t_d
 
     def __str__(self):
         return "Project:" + json.dumps(self.__dict__)
