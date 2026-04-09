@@ -36,10 +36,7 @@ class EnterpriseManager:
                          date: str,
                          budget: str):
         """registers a new project"""
-        patron_descripcion = re.compile(r"^.{10,30}$")
-        resultado = patron_descripcion.fullmatch(project_description)
-        if not resultado:
-            raise EnterpriseManagementException("Invalid description format")
+
 
         patron_departamento = re.compile(r"(HR|FINANCE|LEGAL|LOGISTICS)")
         resultado = patron_departamento.fullmatch(department)
