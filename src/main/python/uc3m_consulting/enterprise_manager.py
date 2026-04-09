@@ -43,8 +43,8 @@ class EnterpriseManager:
                 suma_impares = suma_impares + int(digitos[i])
 
         suma_total = suma_pares_doblados + suma_impares
-        u2 = suma_total % 10
-        r = 10 - u2
+        ultimo_digito = suma_total % 10
+        r = 10 - ultimo_digito
 
         if r == 10:
             r = 0
