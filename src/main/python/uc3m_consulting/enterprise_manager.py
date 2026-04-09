@@ -60,7 +60,7 @@ class EnterpriseManager:
                          budget: str):
         """registers a new project"""
 
-        self.validate_project_acronym(project_acronym)
+
         md = re.compile(r"^.{10,30}$")
         res = md.fullmatch(project_description)
         if not res:
