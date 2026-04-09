@@ -71,7 +71,6 @@ class EnterpriseManager:
         if not res:
             raise EnterpriseManagementException("Invalid department")
 
-        self.validate_starting_date(date)
 
         try:
             f_bdgt  = float(budget)
