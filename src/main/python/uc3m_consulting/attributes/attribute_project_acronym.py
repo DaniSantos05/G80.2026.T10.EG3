@@ -1,4 +1,4 @@
-from uc3m_consulting.attributes.attribute import Attribute
+from main.python.uc3m_consulting.attributes.attribute import Attribute
 
 class AttributeProjectAcronym(Attribute):
     """Definition of attribute ProjectAcronym class"""

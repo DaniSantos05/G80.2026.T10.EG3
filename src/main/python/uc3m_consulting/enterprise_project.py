@@ -3,10 +3,9 @@ import hashlib
 import json
 from datetime import datetime, timezone
 import re
-from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
-
+from main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 from main.python.uc3m_consulting.attributes.attribute_project_acronym import AttributeProjectAcronym
-
+from main.python.uc3m_consulting.attributes.attribute_cif import AttributeCIF
 
 class EnterpriseProject:
     """Class representing a project"""
@@ -18,7 +17,7 @@ class EnterpriseProject:
                  department: str,
                  starting_date: str,
                  project_budget: float):
-        self.__company_cif = self.validate_cif(company_cif)
+        self.__company_cif = AttributeCIF(company_cif).value
         self.__project_description = self.validate_project_description(project_description)
         self.__project_achronym = AttributeProjectAcronym(project_acronym).value
         self.__department = self.validate_department(department)

@@ -7,7 +7,7 @@ from unittest import TestCase
 from os import remove
 from datetime import datetime,timezone
 from freezegun import freeze_time
-from uc3m_consulting import (TEST_NUMDOCS_STORE_FILE,
+from main.python.uc3m_consulting import (TEST_NUMDOCS_STORE_FILE,
                         EnterpriseManager,
                         EnterpriseManagementException)
 

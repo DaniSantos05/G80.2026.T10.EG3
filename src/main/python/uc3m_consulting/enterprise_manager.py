@@ -4,13 +4,13 @@ import json
 
 from datetime import datetime, timezone
 from freezegun import freeze_time
-from uc3m_consulting.enterprise_project import EnterpriseProject
-from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
-from uc3m_consulting.enterprise_manager_config import (PROJECTS_STORE_FILE,
+from main.python.uc3m_consulting.enterprise_project import EnterpriseProject
+from main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+from main.python.uc3m_consulting.enterprise_manager_config import (PROJECTS_STORE_FILE,
                                                        TEST_DOCUMENTS_STORE_FILE,
                                                        TEST_NUMDOCS_STORE_FILE)
-from uc3m_consulting.project_document import ProjectDocument
-from uc3m_consulting.json_store import JsonStore
+from main.python.uc3m_consulting.project_document import ProjectDocument
+from main.python.uc3m_consulting.json_store import JsonStore
 
 
 class EnterpriseManager:
