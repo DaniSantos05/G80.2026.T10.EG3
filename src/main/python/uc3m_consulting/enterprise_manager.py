@@ -2,7 +2,6 @@
 
 import re
 from datetime import datetime, timezone
-from freezegun import freeze_time
 
 from main.python.uc3m_consulting.enterprise_project import EnterpriseProject
 from main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
@@ -73,17 +72,12 @@ class EnterpriseManager:
             doc_date = datetime.fromtimestamp(timestamp).strftime("%d/%m/%Y")
 
             if doc_date == date_str:
-                frozen_time = datetime.fromtimestamp(timestamp, tz=timezone.utc)
-
-                with freeze_time(frozen_time):
-                    project_doc = ProjectDocument(doc["project_id"], doc["file_name"])
-
-                    if project_doc.document_signature == doc["document_signature"]:
-                        count += 1
-                    else:
-                        raise EnterpriseManagementException(
-                            "Inconsistent document signature"
-                        )
+                if ProjectDocument.is_valid_document(doc):
+                    count += 1
+                else:
+                    raise EnterpriseManagementException(
+                        "Inconsistent document signature"
+                    )
 
         if count == 0:
             raise EnterpriseManagementException("No documents found")
