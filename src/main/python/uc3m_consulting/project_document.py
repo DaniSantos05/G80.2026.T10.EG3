@@ -13,6 +13,17 @@ class ProjectDocument():
         justnow = datetime.now(timezone.utc)
         self.__register_date = datetime.timestamp(justnow)
 
+    @classmethod
+    def is_valid_document(cls, doc_data):
+        """Checks if a document entry has a valid signature"""
+        from freezegun import freeze_time
+        from datetime import datetime, timezone
+        time_val = doc_data["register_date"]
+        d_obj = datetime.fromtimestamp(time_val, tz=timezone.utc)
+        with freeze_time(d_obj):
+            p = cls(doc_data["project_id"], doc_data["file_name"])
+            return p.document_signature == doc_data["document_signature"]
+
     def to_json(self):
         """returns the object data in json format"""
         return {"alg": self.__alg,
