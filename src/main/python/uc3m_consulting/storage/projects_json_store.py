@@ -4,7 +4,15 @@ from main.python.uc3m_consulting.enterprise_manager_config import PROJECTS_STORE
 
 
 class ProjectsJsonStore(JsonStoreMaster):
-    """Store for projects"""
+    """Singleton store for projects"""
+
+    #siendo privado el atributo, evitamos conflictos con clases hijas.
+    __instance = None
+
+    def __new__(cls):
+        if cls.__instance is None:
+            cls.__instance = super(ProjectsJsonStore, cls).__new__(cls)
+        return cls.__instance
 
     def __init__(self):
         super().__init__(PROJECTS_STORE_FILE)
