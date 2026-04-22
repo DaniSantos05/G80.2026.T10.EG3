@@ -12,15 +12,24 @@ from main.python.uc3m_consulting import (JSON_FILES_PATH,
                         EnterpriseProject,
                         EnterpriseManager,
                         EnterpriseManagementException)
+from main.python.uc3m_consulting.storage.projects_json_store import ProjectsJsonStore
+from main.python.uc3m_consulting.storage.documents_json_store import DocumentsJsonStore
+from main.python.uc3m_consulting.storage.num_docs_json_store import NumDocsJsonStore
 
 class TestTransferRequestTest(TestCase):
     """Class for testing deliver_product"""
 
     def setUp(self):
-        """ inicializo el entorno de prueba """
+        """inicializo el entorno de prueba y reseteo Singletons"""
+        # Reset de Singletons
+        EnterpriseManager._instance = None
+        ProjectsJsonStore._instance = None
+        DocumentsJsonStore._instance = None
+        NumDocsJsonStore._instance = None
+
+        # Limpieza de fichero físico
         if os.path.exists(PROJECTS_STORE_FILE):
             remove(PROJECTS_STORE_FILE)
-
 
     @staticmethod
     def read_file():
