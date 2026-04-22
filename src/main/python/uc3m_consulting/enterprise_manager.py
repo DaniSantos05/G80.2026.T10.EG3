@@ -13,7 +13,14 @@ from main.python.uc3m_consulting.storage.num_docs_json_store import NumDocsJsonS
 
 
 class EnterpriseManager:
-    """Class for providing the methods for managing the orders"""
+    """Singleton class for managing the orders"""
+
+    _instance = None
+
+    def __new__(cls):
+        if not cls._instance:
+            cls._instance = super(EnterpriseManager, cls).__new__(cls)
+        return cls._instance
 
     def __init__(self):
         pass
