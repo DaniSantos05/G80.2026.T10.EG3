@@ -1,6 +1,7 @@
 """Contains the class OrderShipping"""
 from datetime import datetime, timezone
 import hashlib
+from freezegun import freeze_time
 
 class ProjectDocument():
     """Class representing the information required for shipping of an order"""
@@ -16,8 +17,6 @@ class ProjectDocument():
     @classmethod
     def is_valid_document(cls, doc_data):
         """Checks if a document entry has a valid signature"""
-        from freezegun import freeze_time
-        from datetime import datetime, timezone
         time_val = doc_data["register_date"]
         d_obj = datetime.fromtimestamp(time_val, tz=timezone.utc)
         with freeze_time(d_obj):
