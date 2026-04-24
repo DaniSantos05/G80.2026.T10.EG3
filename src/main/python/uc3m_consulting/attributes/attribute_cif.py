@@ -18,10 +18,8 @@ class AttributeCIF(Attribute):
         if not isinstance(attr_value, str):
             raise EnterpriseManagementException("CIF code must be a string")
 
-        # valida el formato con el regex de la clase padre
         attr_value = super()._validate(attr_value)
 
-        # lógica específica del dígito de control
         primera_letra = attr_value[0]
         digitos = attr_value[1:8]
         caracter_control = attr_value[8]

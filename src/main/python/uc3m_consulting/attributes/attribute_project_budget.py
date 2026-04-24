@@ -1,15 +1,18 @@
-"""MODULE: attribute_project_budget"""
+"""MODULE: attribute_project_budget. Contains the AttributeProjectBudget class"""
 from main.python.uc3m_consulting.attributes.attribute import Attribute
 from main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+
 
 class AttributeProjectBudget(Attribute):
     """Definition of attribute ProjectBudget class"""
 
     def __init__(self, attr_value):
+        """Definition of attribute ProjectBudget init method"""
         super().__init__()
         self._attr_value = self._validate(attr_value)
 
     def _validate(self, attr_value):
+        """Validates the project budget"""
         try:
             budget_float = float(attr_value)
         except ValueError as exc:

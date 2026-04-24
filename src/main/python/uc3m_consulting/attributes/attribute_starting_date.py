@@ -1,19 +1,21 @@
-"""MODULE: attribute_starting_date"""
-import re
+"""MODULE: attribute_starting_date. Contains the AttributeStartingDate class"""
 from datetime import datetime, timezone
 from main.python.uc3m_consulting.attributes.attribute import Attribute
 from main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+
 
 class AttributeStartingDate(Attribute):
     """Definition of attribute StartingDate class"""
 
     def __init__(self, attr_value):
+        """Definition of attribute StartingDate init method"""
         super().__init__()
         self._validation_pattern = r"^(([0-2]\d|3[0-1])\/(0\d|1[0-2])\/\d\d\d\d)$"
         self._error_message = "Invalid date format"
         self._attr_value = self._validate(attr_value)
 
     def _validate(self, attr_value):
+        """Validates the starting date format and value"""
         attr_value = super()._validate(attr_value)
 
         try:

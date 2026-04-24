@@ -1,5 +1,7 @@
+"""MODULE: attribute. Contains the Attribute class"""
 import re
 from main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+
 
 class Attribute:
     """Attribute class definition"""
@@ -24,4 +26,5 @@ class Attribute:
 
     @value.setter
     def value(self, attr_value):
+        """Sets attr_value"""
         self._attr_value = self._validate(attr_value)
