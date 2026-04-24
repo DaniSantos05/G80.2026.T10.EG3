@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test_documents_repor_tests.TestFindDocsMethod-20260424213255" tests="3" file="test_documents_repor_tests.py" time="0.032" timestamp="2026-04-24T21:32:56" failures="0" errors="0" skipped="0">
+	<testcase classname="test_documents_repor_tests.TestFindDocsMethod" name="test_file_wrong_date" time="0.021" timestamp="2026-04-24T21:32:56"/>
+	<testcase classname="test_documents_repor_tests.TestFindDocsMethod" name="test_report_not_found" time="0.007" timestamp="2026-04-24T21:32:56"/>
+	<testcase classname="test_documents_repor_tests.TestFindDocsMethod" name="test_valid_date" time="0.005" timestamp="2026-04-24T21:32:56"/>
+</testsuite>
