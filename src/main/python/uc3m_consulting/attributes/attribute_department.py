@@ -1,5 +1,5 @@
 """MODULE: attribute_department. Contains the AttributeDepartment class"""
-from main.python.uc3m_consulting.attributes.attribute import Attribute
+from uc3m_consulting.attributes.attribute import Attribute
 
 
 class AttributeDepartment(Attribute):

@@ -3,18 +3,18 @@
 import re
 from datetime import datetime
 
-from main.python.uc3m_consulting.enterprise_project import EnterpriseProject
-from main.python.uc3m_consulting.enterprise_management_exception import (
+from uc3m_consulting.enterprise_project import EnterpriseProject
+from uc3m_consulting.enterprise_management_exception import (
     EnterpriseManagementException
 )
-from main.python.uc3m_consulting.project_document import ProjectDocument
-from main.python.uc3m_consulting.num_docs_report import NumDocsReport
+from uc3m_consulting.project_document import ProjectDocument
+from uc3m_consulting.num_docs_report import NumDocsReport
 
-from main.python.uc3m_consulting.storage.projects_json_store import ProjectsJsonStore
-from main.python.uc3m_consulting.storage.documents_json_store import DocumentsJsonStore
-from main.python.uc3m_consulting.storage.num_docs_json_store import NumDocsJsonStore
+from uc3m_consulting.storage.projects_json_store import ProjectsJsonStore
+from uc3m_consulting.storage.documents_json_store import DocumentsJsonStore
+from uc3m_consulting.storage.num_docs_json_store import NumDocsJsonStore
 
-from main.python.uc3m_consulting.enterprise_manager_config import (
+from uc3m_consulting.enterprise_manager_config import (
     ERR_INVALID_DATE,
     ERR_WRONG_FILE,
     ERR_NO_DOCS,

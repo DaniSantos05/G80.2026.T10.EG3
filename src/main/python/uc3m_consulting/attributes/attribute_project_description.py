@@ -1,5 +1,5 @@
 """MODULE: attribute_project_description. Contains the AttributeProjectDescription class"""
-from main.python.uc3m_consulting.attributes.attribute import Attribute
+from uc3m_consulting.attributes.attribute import Attribute
 
 
 class AttributeProjectDescription(Attribute):

@@ -1,6 +1,6 @@
 """MODULE: attribute. Contains the Attribute class"""
 import re
-from main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
 
 class Attribute:

@@ -1,6 +1,6 @@
 """MODULE: num_docs_json_store. Contains the NumDocsJsonStore class"""
-from main.python.uc3m_consulting.storage.json_store_master import JsonStoreMaster
-from main.python.uc3m_consulting.enterprise_manager_config import TEST_NUMDOCS_STORE_FILE
+from uc3m_consulting.storage.json_store_master import JsonStoreMaster
+from uc3m_consulting.enterprise_manager_config import TEST_NUMDOCS_STORE_FILE
 
 
 class NumDocsJsonStore(JsonStoreMaster):

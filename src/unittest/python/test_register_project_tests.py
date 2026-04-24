@@ -9,16 +9,16 @@ from os import remove
 from freezegun import freeze_time
 
 # Importamos las constantes necesarias
-from main.python.uc3m_consulting.enterprise_manager_config import (
+from uc3m_consulting.enterprise_manager_config import (
     JSON_FILES_PATH, PROJECTS_STORE_FILE, ERR_DUPLICATED_PROJECT, ERR_WRONG_FILE
 )
-from main.python.uc3m_consulting.enterprise_project import EnterpriseProject
-from main.python.uc3m_consulting.enterprise_manager import EnterpriseManager
-from main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+from uc3m_consulting.enterprise_project import EnterpriseProject
+from uc3m_consulting.enterprise_manager import EnterpriseManager
+from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
-from main.python.uc3m_consulting.storage.projects_json_store import ProjectsJsonStore
-from main.python.uc3m_consulting.storage.documents_json_store import DocumentsJsonStore
-from main.python.uc3m_consulting.storage.num_docs_json_store import NumDocsJsonStore
+from uc3m_consulting.storage.projects_json_store import ProjectsJsonStore
+from uc3m_consulting.storage.documents_json_store import DocumentsJsonStore
+from uc3m_consulting.storage.num_docs_json_store import NumDocsJsonStore
 
 class TestRegisterProjectMethod(TestCase):
     """Class for testing register_project method"""

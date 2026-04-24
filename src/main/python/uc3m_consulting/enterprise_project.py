@@ -6,12 +6,12 @@ from datetime import datetime, timezone
 # Fíjate que ya no necesitamos importar 're' ni 'EnterpriseManagementException' aquí,
 # porque de eso ya se encargan las clases Attribute.
 
-from main.python.uc3m_consulting.attributes.attribute_project_acronym import AttributeProjectAcronym
-from main.python.uc3m_consulting.attributes.attribute_cif import AttributeCIF
-from main.python.uc3m_consulting.attributes.attribute_project_description import AttributeProjectDescription
-from main.python.uc3m_consulting.attributes.attribute_department import AttributeDepartment
-from main.python.uc3m_consulting.attributes.attribute_starting_date import AttributeStartingDate
-from main.python.uc3m_consulting.attributes.attribute_project_budget import AttributeProjectBudget
+from uc3m_consulting.attributes.attribute_project_acronym import AttributeProjectAcronym
+from uc3m_consulting.attributes.attribute_cif import AttributeCIF
+from uc3m_consulting.attributes.attribute_project_description import AttributeProjectDescription
+from uc3m_consulting.attributes.attribute_department import AttributeDepartment
+from uc3m_consulting.attributes.attribute_starting_date import AttributeStartingDate
+from uc3m_consulting.attributes.attribute_project_budget import AttributeProjectBudget
 
 
 class EnterpriseProject:

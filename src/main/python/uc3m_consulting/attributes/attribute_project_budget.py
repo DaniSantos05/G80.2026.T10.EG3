@@ -1,6 +1,6 @@
 """MODULE: attribute_project_budget. Contains the AttributeProjectBudget class"""
-from main.python.uc3m_consulting.attributes.attribute import Attribute
-from main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+from uc3m_consulting.attributes.attribute import Attribute
+from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
 
 class AttributeProjectBudget(Attribute):

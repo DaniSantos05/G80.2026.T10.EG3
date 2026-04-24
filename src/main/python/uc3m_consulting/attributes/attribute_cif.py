@@ -1,6 +1,6 @@
 """MODULE: attribute_cif. Contains the AttributeCIF class"""
-from main.python.uc3m_consulting.attributes.attribute import Attribute
-from main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+from uc3m_consulting.attributes.attribute import Attribute
+from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
 
 class AttributeCIF(Attribute):

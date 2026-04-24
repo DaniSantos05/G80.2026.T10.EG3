@@ -9,15 +9,15 @@ from datetime import datetime, timezone
 from freezegun import freeze_time
 
 # Importamos las constantes necesarias
-from main.python.uc3m_consulting.enterprise_manager_config import (
+from uc3m_consulting.enterprise_manager_config import (
     TEST_NUMDOCS_STORE_FILE, ERR_INVALID_DATE, ERR_NO_DOCS, ERR_WRONG_FILE
 )
-from main.python.uc3m_consulting.enterprise_manager import EnterpriseManager
-from main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+from uc3m_consulting.enterprise_manager import EnterpriseManager
+from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
-from main.python.uc3m_consulting.storage.projects_json_store import ProjectsJsonStore
-from main.python.uc3m_consulting.storage.documents_json_store import DocumentsJsonStore
-from main.python.uc3m_consulting.storage.num_docs_json_store import NumDocsJsonStore
+from uc3m_consulting.storage.projects_json_store import ProjectsJsonStore
+from uc3m_consulting.storage.documents_json_store import DocumentsJsonStore
+from uc3m_consulting.storage.num_docs_json_store import NumDocsJsonStore
 
 
 class TestFindDocsMethod(TestCase):
