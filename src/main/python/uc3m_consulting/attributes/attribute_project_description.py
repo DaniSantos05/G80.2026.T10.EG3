@@ -1,7 +1,7 @@
 """MODULE: attribute_project_description. Contains the AttributeProjectDescription class"""
 from uc3m_consulting.attributes.attribute import Attribute
 
-
+# pylint: disable=too-few-public-methods
 class AttributeProjectDescription(Attribute):
     """Definition of attribute ProjectDescription class"""
 

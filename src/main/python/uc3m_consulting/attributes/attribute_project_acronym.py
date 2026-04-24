@@ -1,7 +1,7 @@
 """MODULE: attribute_project_acronym. Contains the AttributeProjectAcronym class"""
 from uc3m_consulting.attributes.attribute import Attribute
 
-
+# pylint: disable=too-few-public-methods
 class AttributeProjectAcronym(Attribute):
     """Definition of attribute ProjectAcronym class"""
 

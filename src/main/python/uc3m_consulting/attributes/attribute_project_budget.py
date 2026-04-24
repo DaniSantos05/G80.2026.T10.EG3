@@ -2,7 +2,7 @@
 from uc3m_consulting.attributes.attribute import Attribute
 from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
-
+# pylint: disable=too-few-public-methods
 class AttributeProjectBudget(Attribute):
     """Definition of attribute ProjectBudget class"""
 

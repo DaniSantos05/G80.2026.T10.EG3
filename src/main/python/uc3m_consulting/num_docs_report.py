@@ -1,7 +1,7 @@
 """Module containing the NumDocsReport class"""
 from datetime import datetime, timezone
 
-
+# pylint: disable=too-few-public-methods
 class NumDocsReport:
     """Class representing a document search report"""
 

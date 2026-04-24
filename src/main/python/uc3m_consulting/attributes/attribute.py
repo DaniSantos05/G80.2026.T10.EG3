@@ -3,6 +3,7 @@ import re
 from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
 
+# pylint: disable=too-few-public-methods
 class Attribute:
     """Attribute class definition"""
 

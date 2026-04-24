@@ -36,6 +36,7 @@ class EnterpriseManager:
     def __init__(self):
         pass
 
+    # pylint: disable=too-many-positional-arguments
     # pylint: disable=too-many-arguments
     def register_project(self,
                          company_cif: str,

@@ -2,7 +2,7 @@
 from uc3m_consulting.attributes.attribute import Attribute
 from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
-
+# pylint: disable=too-few-public-methods
 class AttributeCIF(Attribute):
     """Definition of attribute CIF class"""
 
@@ -27,6 +27,7 @@ class AttributeCIF(Attribute):
         suma_pares_doblados = 0
         suma_impares = 0
 
+        # pylint: disable=consider-using-enumerate
         for i in range(len(digitos)):
             if i % 2 == 0:
                 digito_doblado = int(digitos[i]) * 2

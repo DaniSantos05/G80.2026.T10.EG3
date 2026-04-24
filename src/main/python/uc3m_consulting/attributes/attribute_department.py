@@ -1,7 +1,7 @@
 """MODULE: attribute_department. Contains the AttributeDepartment class"""
 from uc3m_consulting.attributes.attribute import Attribute
 
-
+# pylint: disable=too-few-public-methods
 class AttributeDepartment(Attribute):
     """Definition of attribute Department class"""
 
